@@ -9,13 +9,14 @@ jobs:
         python: [3.11]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{matrix.python}}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{matrix.python}}
-      - name: Run tests
-        run: |
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+         with:
+         python-version: "3.12"
+      - name: Install cowsay package
+         run: python3 -m pip install .
+      - name: Run cowsay
+         run: cowsay "moo"
           # everything that we put in here is a terminal command
           # the behavior on github actions will be basically the same
           # as the behavior in the terminal on your own computer
